@@ -24,7 +24,7 @@ body {
 }
 
 #header {
-	padding: 5px 0px;
+	padding: 1% 0;
 	text-align: center;
 	color: var(--acc2);/*#eac456;*/
 	font-size: 53px;
@@ -41,13 +41,17 @@ body {
 
 #menu {
 	position: absolute;
-	padding: 20px;
-	transition: linear 0.3s;
+	padding: 1%;
+	transition: linear 0.15s;
 }
 
 #menu:hover {
-	top: +5px;
-	transition: linear 0.4s;
+	padding: 1.2% 1%;
+	transition: linear 0.15s;
+}
+
+#menu:hover .bar {
+	background-color: var(--acc1);
 }
 
 .bar {
@@ -61,7 +65,7 @@ body {
 
 .days {
 	border-style: groove;
-	height: 40px; width: 140px;
+	height: 3em; width: 8em;
 	color: white;
 	font-size: 18px;
 	text-align: center;
@@ -70,8 +74,8 @@ body {
 
 .box {
 	border-style: groove;
-	height: 140px;
-	width: 140px;
+	width: 9em;
+	height: 9em;
 	background-color: white;
 }
 
