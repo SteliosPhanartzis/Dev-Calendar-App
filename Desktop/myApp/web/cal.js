@@ -1,8 +1,19 @@
 //Variables
-var monthName = ['January','February','March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var monthName = [
+	{month:'January', numDays: 31},
+	{month:'February', numDays: 28},
+	{month:'March', numDays: 31},
+	{month:'April', numDays: 30},
+	{month:'May', numDays: 31},
+	{month:'June', numDays: 30},
+	{month:'July', numDays: 31},
+	{month:'August', numDays: 31}, 
+	{month:'September', numDays: 30}, 
+	{month:'October', numDays: 31},
+	{month:'November', numDays: 30}, 
+	{month:'December', numDays: 31}
+];
 var dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-var jan=31; var feb=28; var mar=31; var apr=30; var may=31; var jun=30; 
-var jul=31; var aug=31; var sep=30; var oct=31; var nov=30; var dec=31;
 var today = new Date();
 var tdate = today.getDate();
 var tday = today.getDay();
@@ -22,14 +33,21 @@ for(i = 0; i < 7; i++){
 	}
 	else {
 		for(j=0;j<7;j++){
+			//Creates date container
 			var box = document.createElement("span");
 			box.className = "box";
+			//Adds date inside the container
 			var date = document.createElement("span");
 			date.className = "date";
-			if(j+1+((i-1)*7) == tdate) date.id = "current";
+			if(j+((i-1)*7) == tdate + tday) date.id = "current";
+			
 			document.getElementsByClassName("row")[i].appendChild(box);
 			document.getElementsByClassName("box")[j+((i-1)*7)].appendChild(date);
-			document.getElementsByClassName("date")[j+((i-1)*7)].innerHTML = j+1+((i-1)*7);
+			
+			var boxDate = (j+((i-1)*7)) - tday;
+			if(boxDate > 0 && boxDate <= monthName[tmonth].numDays){
+				document.getElementsByClassName("date")[j+((i-1)*7)].innerHTML = boxDate;
+			}
 		}
 	}
 }
@@ -38,6 +56,6 @@ for(i=0;i<7;i++){
 	document.getElementsByClassName("days")[i].innerHTML = dayName[i];
 }	
 
-document.getElementById("header").innerHTML = monthName[tmonth];
+document.getElementById("header").innerHTML = monthName[tmonth].month + " " + tyear;
 	
 document.getElementById("calendar").appendChild(document.createElement("br"));
