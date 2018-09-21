@@ -8,21 +8,24 @@
 	/*Red*/
 	--acc1: #E98074;
 	--acc2: #E85A4F;
+	/*Fonts*/
+	--fonts: 'Fjalla One',sans-serif;
 }
 
 body {
-	font-family: 'Fjalla One', sans-serif;
+	font-family: var(--fonts);
 	background-color: var(--prim);
 }
 
 #calendar {
 	position: absolute;
 	top: 10%;
-	left: 10%;
+	left: 22%;
 }
 
 #header {
-	padding: 5px 50px;
+	padding: 5px 0px;
+	text-align: center;
 	color: var(--acc2);/*#eac456;*/
 	font-size: 53px;
 }
@@ -44,7 +47,7 @@ body {
 }
 
 .box .date {
-	font-family: 'Fjalla One',sans-serif;
+	font-family: var(--fonts);
 	color: var(--tert);
 	position: relative;
 	top: 5px;
