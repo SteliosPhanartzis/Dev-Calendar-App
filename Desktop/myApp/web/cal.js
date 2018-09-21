@@ -1,3 +1,5 @@
+//var $ = require('jQuery');
+
 //Variables
 var monthName = [
 	{month:'January', numDays: 31},
@@ -45,8 +47,16 @@ for(i = 0; i < 7; i++){
 			document.getElementsByClassName("box")[j+((i-1)*7)].appendChild(date);
 			
 			var boxDate = (j+((i-1)*7)) - tday;
-			if(boxDate > 0 && boxDate <= monthName[tmonth].numDays){
+			if(boxDate <= 0){
+				document.getElementsByClassName("date")[j+((i-1)*7)].innerHTML = monthName[tmonth-1].numDays + boxDate;
+				date.className = "date greyed";
+			}
+			else if(boxDate > 0 && boxDate <= monthName[tmonth].numDays){
 				document.getElementsByClassName("date")[j+((i-1)*7)].innerHTML = boxDate;
+			}
+			else {
+				document.getElementsByClassName("date")[j+((i-1)*7)].innerHTML = boxDate-monthName[tmonth].numDays;
+				date.className = "date greyed";
 			}
 		}
 	}
@@ -59,3 +69,10 @@ for(i=0;i<7;i++){
 document.getElementById("header").innerHTML = monthName[tmonth].month + " " + tyear;
 	
 document.getElementById("calendar").appendChild(document.createElement("br"));
+
+$(function(){
+  $('.box').css({ height: $(window).innerHeight()/10 });
+  $(window).resize(function(){
+    $('.box').css({ height: $(window).innerHeight()/10 });
+  });
+});

@@ -15,12 +15,17 @@
 body {
 	font-family: var(--fonts);
 	background-color: var(--prim);
+	color: black;
+	width: 100%;
+	height: 100%;
 }
 
 #calendar {
 	position: absolute;
-	top: 10%;
-	left: 29%;
+	top: 12%;
+	left: 25.5%;
+	min-width: 50%;
+	min-height: 50%;
 }
 
 #header {
@@ -42,12 +47,12 @@ body {
 #menu {
 	position: absolute;
 	padding: 1%;
-	transition: linear 0.15s;
+	transition: linear 0.1s;
 }
 
 #menu:hover {
 	padding: 1.2% 1%;
-	transition: linear 0.15s;
+	transition: linear 0.1s;
 }
 
 #menu:hover .bar {
@@ -62,10 +67,12 @@ body {
 	border-width: thin;
 	border-color: var(--tert); 
 }
-
+.greyed {
+	color: lightgray;
+}
 .days {
 	border-style: groove;
-	height: 3em; width: 8em;
+	height: 2em; width: 14.09%;
 	color: white;
 	font-size: 18px;
 	text-align: center;
@@ -74,19 +81,17 @@ body {
 
 .box {
 	border-style: groove;
-	width: 9em;
-	height: 9em;
+	width: 14.09%;
+	min-height: 3em;
 	background-color: white;
 }
 
 .box .date {
 	font-family: var(--fonts);
-	color: var(--tert);
 	position: relative;
 	top: 5px;
-	left: 100px;
-	padding: 4px 9px;
-	color: black;
+	left: 75%;
+	padding: 1% 6%;
 	transition: ease-out 0.15s;
 }
 
