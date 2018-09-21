@@ -1,26 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+:root {
+	/*Tan*/
+	--prim: #EAE7DC;
+	--sec: #D8C3A5;
+	/*Gray*/
+	--tert: #8E8D8A;
+	/*Red*/
+	--acc1: #E98074;
+	--acc2: #E85A4F;
+}
+
+body {
+	font-family: 'Fjalla One', sans-serif;
+	background-color: var(--prim);
+}
+
 #calendar {
 	position: absolute;
 	top: 10%;
 	left: 10%;
 }
 
-.box {
-	border-style: groove;
-	padding: 50px;
+#header {
+	padding: 5px 50px;
+	color: var(--acc2);/*#eac456;*/
+	font-size: 53px;
 }
 
-.date {
-	font-family:sans-serif;
-	color: #555;
+.days {
+	border-style: groove;
+	height: 40px; width: 140px;
+	color: white;
+	font-size: 18px;
+	text-align: center;
+	background-color: var(--sec);
+}
+
+.box {
+	border-style: groove;
+	height: 140px;
+	width: 140px;
+	background-color: white;
+}
+
+.box .date {
+	font-family: 'Fjalla One',sans-serif;
+	color: var(--tert);
 	position: relative;
-	bottom: 40px;
-	left: 40px;
+	top: 5px;
+	left: 100px;
 	padding: 4px 9px;
 	color: black;
 	transition: ease-out 0.15s;
 }
+
 #current {
-	background-color: red;
+	background-color: var(--acc1);
 	color: white;
 	border-radius: 20px;
 }
