@@ -117,6 +117,11 @@ body {
 	transition: all 0.5s ease;
 }
 
+button {
+	border: none;
+	background-color: white;
+}
+
 #sidebartoggler {
   	display: none;
 }
