@@ -23,9 +23,10 @@ body {
 #calendar {
 	position: absolute;
 	top: 12%;
-	left: 25.5%;
+	left: 25%;
 	min-width: 50%;
 	min-height: 50%;
+	transition: 0.12s ease-in;
 }
 
 #header {
@@ -35,16 +36,8 @@ body {
 	font-size: 53px;
 }
 
-#sidebar {
-	position: absolute;
-	height: 110%; 
-	width: 20%;
-	top: 0;
-	left: -20%;
-	background-color: var(--sec);
-}
-
 #menu {
+	z-index: 10;
 	position: absolute;
 	padding: 1%;
 	transition: linear 0.1s;
@@ -63,7 +56,7 @@ body {
 	padding: 2px 20px;
 	margin: 5px;
 	background-color: var(--sec);
-	border: solid;
+	border: dotted;
 	border-width: thin;
 	border-color: var(--tert); 
 }
@@ -72,7 +65,8 @@ body {
 }
 .days {
 	border-style: groove;
-	height: 2em; width: 14.09%;
+	height: 2em; 
+	width: 14.09%;
 	color: white;
 	font-size: 18px;
 	text-align: center;
@@ -90,7 +84,7 @@ body {
 	font-family: var(--fonts);
 	position: relative;
 	top: 5px;
-	left: 75%;
+	right: -72%;
 	padding: 1% 6%;
 	transition: ease-out 0.15s;
 }
@@ -107,4 +101,37 @@ body {
 	background-color: lightgray;
 	transition: ease-in 0.15s;
 	cursor: pointer; 
+}
+
+.sidebar {
+	z-index: 0;
+	position: absolute;
+	height: 100%; 
+	width: 15%;
+	top: 0;
+	left: -20%;
+	background-color: var(--sec);
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#sidebartoggler {
+  	display: none;
+}
+
+#sidebartoggler:checked + .page-wrap .sidebar {
+	left: 0; 
+	transition: 0.12s ease-in-out;
+}
+
+#sidebartoggler:checked + .page-wrap #calendar {
+	left: 30%; 
+	transition: 0.12s ease-in;
+}
+
+#sidebartoggler:checked + .page-wrap #menu {
+	padding-left: 30px; 
+	transition: 0.12s ease-in;
 }

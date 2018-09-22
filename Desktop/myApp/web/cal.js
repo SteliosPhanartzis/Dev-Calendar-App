@@ -66,6 +66,11 @@ for(i=0;i<7;i++){
 	document.getElementsByClassName("days")[i].innerHTML = dayName[i];
 }	
 
+//Add items to sidebar
+//var sidebarList = document.createElement("ul");
+//
+//document.getElementsByClassName("sidebar").appendChild(document.createElement("ul"));
+//
 document.getElementById("header").innerHTML = monthName[tmonth].month + " " + tyear;
 	
 document.getElementById("calendar").appendChild(document.createElement("br"));
