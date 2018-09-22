@@ -1,5 +1,11 @@
-//var $ = require('jQuery');
-
+//Resizing
+$(function(){
+  $('.box').css({ height: $(window).innerHeight()/10 });
+  $(window).resize(function(){
+    $('.box').css({ height: $(window).innerHeight()/10 });
+  });
+});
+/***************Main Calendar***************/
 //Variables
 var monthName = [
 	{month:'January', numDays: 31},
@@ -39,8 +45,9 @@ for(i = 0; i < 7; i++){
 			var box = document.createElement("span");
 			box.className = "box";
 			//Adds date inside the container
-			var date = document.createElement("span");
+			var date = document.createElement("button");
 			date.className = "date";
+			date.onclick=dateClicked;
 			if(j+((i-1)*7) == tdate + tday) date.id = "current";
 			
 			document.getElementsByClassName("row")[i].appendChild(box);
@@ -75,9 +82,7 @@ document.getElementById("header").innerHTML = monthName[tmonth].month + " " + ty
 	
 document.getElementById("calendar").appendChild(document.createElement("br"));
 
-$(function(){
-  $('.box').css({ height: $(window).innerHeight()/10 });
-  $(window).resize(function(){
-    $('.box').css({ height: $(window).innerHeight()/10 });
-  });
-});
+/******************Date****************/
+function dateClicked(){
+			alert(this.innerHTML + " button was clicked");
+}
