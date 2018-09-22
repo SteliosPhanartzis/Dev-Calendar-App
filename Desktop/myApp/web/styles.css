@@ -128,9 +128,9 @@ body {
 	overflow:auto;
 }
 #eForm {
-	max-width:300px;
+	max-width:450px;
 	min-width:250px;
-	padding:10px 50px;
+	padding: 10px 50px;
 	border: groove;
 	font-family: var(--fonts);
 	background-color:#fff
@@ -140,7 +140,7 @@ body {
 	position:absolute;
 	left:50%;
 	top:17%;
-	margin-left:-202px;
+	margin-left:-10%;
 	font-family: var(--fonts);
 }
 
@@ -160,14 +160,24 @@ input[type=text] {
 	background-position:5px 7px;*/
 }
 
-#email {
-	/*background-image:url(../images/email.png);
+#strtTime {
+	width: 40%;
+	margin-right: 1%;
+	/*background-image:url(../images/clock.png);
+	background-repeat:no-repeat;
+	background-position:5px 7px;*/
+}
+
+#endTime {
+	width: 40%;
+	margin-left: 1%;
+	/*background-image:url(../images/clock.png);
 	background-repeat:no-repeat;
 	background-position:5px 7px;*/
 }
 
 textarea {
-	/*background-image:url(../images/msg.png);
+	/*background-image:url(../images/dsc.png);
 	background-repeat:no-repeat;
 	background-position:5px 7px;*/
 	width:82%;
@@ -184,7 +194,7 @@ textarea {
 
 #submit {
 	text-decoration:none;
-	width:100%;
+	width:82%;
 	text-align:center;
 	display:block;
 	background-color:#FFBC00;

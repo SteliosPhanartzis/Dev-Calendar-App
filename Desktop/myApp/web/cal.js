@@ -92,9 +92,11 @@ function dateClicked(){
 	"<div id=\"formContainer\">" +
 	"<form action=\"#\" id=\"eForm\" method=\"post\" name=\"form\">" +
 	"<img id= \"close\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png\" onclick =\"div_hide()\">" +
-	"<h2>Event</h2><hr/>" +
-	"<input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\"><input id=\"email\" name=\"email\" placeholder=\"Email\" type=\"text\">" +
-	"<textarea id=\"msg\" name=\"message\" placeholder=\"Message\">" +
+	"<h2>New Event</h2><hr/>" +
+	"<input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\">" +
+	"<input id=\"strtTime\" name=\"startTime\" placeholder=\"Start Time\" type=\"text\">" +
+	"<input id=\"endTime\" name=\"endTime\" placeholder=\"End Time\" type=\"text\">" +
+	"<textarea id=\"desc\" name=\"description\" placeholder=\"Description\">" +
 	"</textarea><a href=\"javascript:%20check_empty()\" id=\"submit\">Send</a></form>" +
 	"</div></div>";
 	evPopup.innerHTML = eForm;
@@ -103,7 +105,7 @@ function dateClicked(){
 
 // Validating Empty Field
 function check_empty() {
-	if (document.getElementById('name').value == "" || document.getElementById('email').value == "" || document.getElementById('msg').value == "") {
+	if (document.getElementById('name').value == "" || document.getElementById('strtTime').value == "" || document.getElementById('endTime').value == "" || document.getElementById('desc').value == "") {
 		alert("Fill All Fields !");
 	} 
 	else {
