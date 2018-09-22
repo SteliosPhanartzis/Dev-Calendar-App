@@ -84,5 +84,41 @@ document.getElementById("calendar").appendChild(document.createElement("br"));
 
 /******************Date****************/
 function dateClicked(){
-			alert(this.innerHTML + " button was clicked");
+	console.log(this.innerHTML + " button was clicked");
+	div_show();
+	evPopup = document.getElementById('eventPopup');
+	var eForm=
+	"<div id=\"formBG\">" +
+	"<div id=\"formContainer\">" +
+	"<form action=\"#\" id=\"eForm\" method=\"post\" name=\"form\">" +
+	"<img id= \"close\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png\" onclick =\"div_hide()\">" +
+	"<h2>Event</h2><hr/>" +
+	"<input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\"><input id=\"email\" name=\"email\" placeholder=\"Email\" type=\"text\">" +
+	"<textarea id=\"msg\" name=\"message\" placeholder=\"Message\">" +
+	"</textarea><a href=\"javascript:%20check_empty()\" id=\"submit\">Send</a></form>" +
+	"</div></div>";
+	evPopup.innerHTML = eForm;
+	console.log("Form has been generated!");
+}
+
+// Validating Empty Field
+function check_empty() {
+	if (document.getElementById('name').value == "" || document.getElementById('email').value == "" || document.getElementById('msg').value == "") {
+		alert("Fill All Fields !");
+	} 
+	else {
+		document.getElementById('eForm').submit();
+		div_hide();
+		alert("Form Submitted Successfully...");
+	}
+}
+//Function To Display Popup
+function div_show() {
+	document.getElementById('eventPopup').style.display = "block";
+	console.log("Form has been shown!");
+}
+//Function to Hide Popup
+function div_hide(){
+	document.getElementById('eventPopup').style.display = "none";
+	console.log("Form has been hidden!");
 }
