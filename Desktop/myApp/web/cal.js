@@ -5,7 +5,9 @@ $(function(){
     $('.box').css({ height: $(window).innerHeight()/10 });
   });
 });
+
 /***************Main Calendar***************/
+
 //Variables
 var monthName = [
 	{month:'January', numDays: 31},
@@ -28,6 +30,7 @@ var tday = today.getDay();
 var tmonth = today.getMonth();
 var tyear = 1900 + today.getYear();
 
+//Calendar
 for(i = 0; i < 7; i++){
 	var row = document.createElement("div");
 	row.className = "row";
@@ -45,9 +48,9 @@ for(i = 0; i < 7; i++){
 			var box = document.createElement("span");
 			box.className = "box";
 			//Adds date inside the container
-			var date = document.createElement("button");
+			var date = document.createElement("span");
 			date.className = "date";
-			date.onclick=dateClicked;
+			box.onclick=dateClicked;
 			if(j+((i-1)*7) == tdate + tday) date.id = "current";
 			
 			document.getElementsByClassName("row")[i].appendChild(box);
@@ -74,15 +77,21 @@ for(i=0;i<7;i++){
 }	
 
 //Add items to sidebar
-//var sidebarList = document.createElement("ul");
-//
-//document.getElementsByClassName("sidebar").appendChild(document.createElement("ul"));
-//
+var sidebarList = document.createElement("ul");
+var sidebarListElement = document.createElement("li");
+sidebarList.className = "sideList";
+sidebarListElement.className = "listElement";
+document.getElementsByClassName("sidebar")[0].appendChild(sidebarList);
+sidebarList.appendChild(sidebarListElement);
+sidebarListElement.innerHTML = "Add New Event";
+sidebarListElement.onclick = dateClicked;
+
+//Month and Year
 document.getElementById("header").innerHTML = monthName[tmonth].month + " " + tyear;
-	
 document.getElementById("calendar").appendChild(document.createElement("br"));
 
-/******************Date****************/
+/******************Date Form****************/
+
 function dateClicked(){
 	console.log(this.innerHTML + " button was clicked");
 	div_show();
