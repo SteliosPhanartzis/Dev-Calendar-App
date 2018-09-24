@@ -1,14 +1,5 @@
-//Resizing
-$(function(){
-  $('.box').css({ height: $(window).innerHeight()/10 });
-  $(window).resize(function(){
-    $('.box').css({ height: $(window).innerHeight()/10 });
-  });
-});
+/*****************Variables*******************/
 
-/***************Main Calendar***************/
-
-//Variables
 var monthName = [
 	{month:'January', numDays: 31},
 	{month:'February', numDays: 28},
@@ -30,7 +21,30 @@ var tday = today.getDay();
 var tmonth = today.getMonth();
 var tyear = 1900 + today.getYear();
 
-//Calendar
+/***************Resizing*****************/
+
+$(function(){
+  $('.box').css({ height: $(window).innerHeight()/10 });
+  $(window).resize(function(){
+    $('.box').css({ height: $(window).innerHeight()/10 });
+  });
+});
+
+/**********Show and hide selected elements***********/
+
+//Function To Display Popup
+function div_show(item) {
+	document.getElementById(item).style.display = "block";
+	console.log(item + " has been shown!");
+}
+//Function to Hide Popup
+function div_hide(item){
+	document.getElementById(item).style.display = "none";
+	console.log(item + " has been hidden!");
+}
+
+/***************Main Calendar***************/
+
 for(i = 0; i < 7; i++){
 	var row = document.createElement("div");
 	row.className = "row";
@@ -87,20 +101,26 @@ sidebarListElement.innerHTML = "Add New Event";
 sidebarListElement.onclick = dateClicked;
 
 //Month and Year
-document.getElementById("header").innerHTML = monthName[tmonth].month + " " + tyear;
+var heading = document.getElementById("header");
+heading.innerHTML = monthName[tmonth].month + " " + tyear;
+heading.onclick = monthClicked;
 document.getElementById("calendar").appendChild(document.createElement("br"));
+
+/******************Day View*****************/
+
+
 
 /******************Date Form****************/
 
 function dateClicked(){
 	console.log(this.innerHTML + " button was clicked");
-	div_show();
+	div_show('eventPopup');
 	evPopup = document.getElementById('eventPopup');
 	var eForm=
 	"<div id=\"formBG\">" +
 	"<div id=\"formContainer\">" +
 	"<form action=\"#\" id=\"eForm\" method=\"post\" name=\"form\">" +
-	"<img id= \"close\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png\" onclick =\"div_hide()\">" +
+	"<img class= \"close\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png\" onclick =\"div_hide('eventPopup')\">" +
 	"<h2>New Event</h2><hr/>" +
 	"<input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\">" +
 	"<input id=\"strtTime\" name=\"startTime\" placeholder=\"Start Time\" type=\"text\">" +
@@ -119,17 +139,29 @@ function check_empty() {
 	} 
 	else {
 		document.getElementById('eForm').submit();
-		div_hide();
+		div_hide('eventPopup');
 		alert("Form Submitted Successfully...");
 	}
 }
-//Function To Display Popup
-function div_show() {
-	document.getElementById('eventPopup').style.display = "block";
-	console.log("Form has been shown!");
-}
-//Function to Hide Popup
-function div_hide(){
-	document.getElementById('eventPopup').style.display = "none";
-	console.log("Form has been hidden!");
+
+/****************Month Form******************/
+
+function monthClicked(){
+	console.log(this.innerHTML + " button was clicked");
+	div_show('eventPopup');
+	/*moPopup = document.getElementById('monthPopup');
+	var moForm=
+	"<div id=\"monthBG\">" +
+	"<div id=\"formContainer\">" +
+	"<form action=\"#\" id=\"eForm\" method=\"post\" name=\"form\">" +
+	"<img class= \"close\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png\" onclick =\"div_hide(monthPopup)\">" +
+	"<h2>New Event</h2><hr/>" +
+	"<input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\">" +
+	"<input id=\"strtTime\" name=\"startTime\" placeholder=\"Start Time\" type=\"text\">" +
+	"<input id=\"endTime\" name=\"endTime\" placeholder=\"End Time\" type=\"text\">" +
+	"<textarea id=\"desc\" name=\"description\" placeholder=\"Description\">" +
+	"</textarea><a href=\"javascript:%20check_empty()\" id=\"submit\">Send</a></form>" +
+	"</div></div>";
+	moPopup.innerHTML = moForm;*/
+	console.log("Month list has been displayed!");
 }

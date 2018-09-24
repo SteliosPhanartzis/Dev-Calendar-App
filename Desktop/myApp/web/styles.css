@@ -2,6 +2,7 @@
 :root {
 	/*Tan*/
 	--prim: #EAE7DC;
+	--primAcc: #f4f1e6;
 	--sec: #D8C3A5;
 	/*Gray*/
 	--tert: #8E8D8A;
@@ -31,9 +32,16 @@ body {
 
 #header {
 	padding: 1% 0;
+	margin: 0 41%;
 	text-align: center;
 	color: var(--acc2);/*#eac456;*/
 	font-size: 53px;
+}
+
+#header:hover {
+	cursor: pointer;
+	background-image: radial-gradient(white, var(--prim) 70%);
+	transition: ease-in 0.3s
 }
 
 #menu {
@@ -46,6 +54,7 @@ body {
 #menu:hover {
 	padding: 1.2% 1%;
 	transition: linear 0.1s;
+	cursor: pointer;
 }
 
 #menu:hover .bar {
@@ -208,7 +217,7 @@ hr {
 	border-top:1px solid #ccc;
 }
 
-#close {
+.close {
 	position: absolute;
 	right: 14px;
 	top: 14px;
@@ -244,7 +253,7 @@ button {
 	color: white;
 	text-align: center;
 	cursor: pointer;
-	background-color: tan;
+	background-color: var(--acc2);
 }
 
 #sidebartoggler {
@@ -267,4 +276,9 @@ button {
 }
 #sidebartoggler:checked + .page-wrap #menu .bar {
 	background-color: var(--prim);
+}
+
+#sidebartoggler:checked + .page-wrap #menu:hover .bar {
+	background-color: var(--acc1);
+	cursor: pointer;
 }
