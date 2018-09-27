@@ -1,0 +1,15 @@
+{
+  "root": "Dev-Calendar-App/Desktop/myApp/web/"
+  "encoding": "US-ASCII"
+  
+}
+{
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-pgbouncer"
+    },
+    {
+      "url": "heroku/php"
+    }
+  ]
+}
