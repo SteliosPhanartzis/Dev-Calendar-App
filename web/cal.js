@@ -15,20 +15,39 @@ var monthName = [
 	{month:'December', numDays: 31}
 ];
 var dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-var today = new Date();
+var today = new Date()
 var tdate = today.getDate();
 var tday = today.getDay();
 var tmonth = today.getMonth();
 var tyear = 1900 + today.getYear();
+var offset=7-(tdate-tday)%7;
+//console.log(monthName[tmonth].numDays%7+monthName[tmonth-1].numDays%7);
+
+/***************Page Setup******************/
+//Add items to sidebar
+var sidebarList = document.createElement("ul");
+var sidebarListElement = document.createElement("li");
+sidebarList.className = "sideList";
+sidebarListElement.className = "listElement";
+document.getElementsByClassName("sidebar")[0].appendChild(sidebarList);
+sidebarList.appendChild(sidebarListElement);
+sidebarListElement.innerHTML = "Add New Event";
+sidebarListElement.onclick = newEvent;
+
+//Month and Year
+var heading = document.getElementById("header");
+heading.innerHTML = monthName[tmonth].month + " " + tyear;
+heading.onclick = monthClicked;
+document.getElementById("calendar").appendChild(document.createElement("br"));
 
 /***************Resizing*****************/
 
-$(function(){
+function resize(){
   $('.box').css({ height: $(window).innerHeight()/10 });
   $(window).resize(function(){
     $('.box').css({ height: $(window).innerHeight()/10 });
   });
-});
+}
 
 /**********Show and hide selected elements***********/
 
@@ -44,7 +63,9 @@ function div_hide(item){
 }
 
 /***************Main Calendar***************/
-
+function monthView(item){
+document.getElementById("calendar").innerHTML="";
+console.log(offset);
 for(i = 0; i < 7; i++){
 	var row = document.createElement("div");
 	row.className = "row";
@@ -64,13 +85,14 @@ for(i = 0; i < 7; i++){
 			//Adds date inside the container
 			var date = document.createElement("span");
 			date.className = "date";
-			box.onclick=dateClicked;
-			if(j+((i-1)*7) == tdate + tday) date.id = "current";
+			box.onclick=function(){dayView(this.getElementsByClassName("date")[0].innerHTML);};
+			if((j+((i-2)*7)+(7-offset)) == tdate) date.id = "current";
 			
 			document.getElementsByClassName("row")[i].appendChild(box);
 			document.getElementsByClassName("box")[j+((i-1)*7)].appendChild(date);
 			
-			var boxDate = (j+((i-1)*7)) - tday;
+			var boxDate = j+((i-1)*7)-offset;
+			console.log(boxDate);
 			if(boxDate <= 0){
 				document.getElementsByClassName("date")[j+((i-1)*7)].innerHTML = monthName[tmonth-1].numDays + boxDate;
 				date.className = "date greyed";
@@ -84,42 +106,35 @@ for(i = 0; i < 7; i++){
 			}
 		}
 	}
+	resize();
+	}
+	for(i=0;i<7;i++){
+		document.getElementsByClassName("days")[i].innerHTML = dayName[i];
+	}	
 }
-
-for(i=0;i<7;i++){
-	document.getElementsByClassName("days")[i].innerHTML = dayName[i];
-}	
-
-//Add items to sidebar
-var sidebarList = document.createElement("ul");
-var sidebarListElement = document.createElement("li");
-sidebarList.className = "sideList";
-sidebarListElement.className = "listElement";
-document.getElementsByClassName("sidebar")[0].appendChild(sidebarList);
-sidebarList.appendChild(sidebarListElement);
-sidebarListElement.innerHTML = "Add New Event";
-sidebarListElement.onclick = dateClicked;
-
-//Month and Year
-var heading = document.getElementById("header");
-heading.innerHTML = monthName[tmonth].month + " " + tyear;
-heading.onclick = monthClicked;
-document.getElementById("calendar").appendChild(document.createElement("br"));
 
 /******************Day View*****************/
 
+function dayView(item){
+	document.getElementById("calendar").innerHTML = "";
+	var dView = document.createElement("div");
+	dView.id = "dayView";
+	var itemValue = parseInt(item);
+	dView.innerHTML = dayName[(itemValue + offset)%7] + " " + item;
+	document.getElementById("calendar").appendChild(dView);
+	resize();
+}
 
+/******************Event Form****************/
 
-/******************Date Form****************/
-
-function dateClicked(){
+function newEvent(){
 	console.log(this.innerHTML + " button was clicked");
-	div_show('eventPopup');
 	evPopup = document.getElementById('eventPopup');
+	div_show('eventPopup');
 	var eForm=
-	"<div id=\"formBG\">" +
-	"<div id=\"formContainer\">" +
-	"<form action=\"#\" id=\"eForm\" method=\"post\" name=\"form\">" +
+	"<div class=\"formBGDark\">" +
+	"<div class=\"formContainer\">" +
+	"<form action=\"#\" class=\"fillForm\" method=\"post\" name=\"form\">" +
 	"<img class= \"close\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png\" onclick =\"div_hide('eventPopup')\">" +
 	"<h2>New Event</h2><hr/>" +
 	"<input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\">" +
@@ -148,20 +163,35 @@ function check_empty() {
 
 function monthClicked(){
 	console.log(this.innerHTML + " button was clicked");
-	div_show('eventPopup');
-	/*moPopup = document.getElementById('monthPopup');
+	moPopup = document.getElementById('monthPopup');
+	div_show('monthPopup');
 	var moForm=
-	"<div id=\"monthBG\">" +
-	"<div id=\"formContainer\">" +
-	"<form action=\"#\" id=\"eForm\" method=\"post\" name=\"form\">" +
-	"<img class= \"close\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png\" onclick =\"div_hide(monthPopup)\">" +
-	"<h2>New Event</h2><hr/>" +
-	"<input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\">" +
-	"<input id=\"strtTime\" name=\"startTime\" placeholder=\"Start Time\" type=\"text\">" +
-	"<input id=\"endTime\" name=\"endTime\" placeholder=\"End Time\" type=\"text\">" +
-	"<textarea id=\"desc\" name=\"description\" placeholder=\"Description\">" +
-	"</textarea><a href=\"javascript:%20check_empty()\" id=\"submit\">Send</a></form>" +
+	"<div class=\"formBGNone\">" +
+	"<div class=\"formContainer\">" +
+	"<div class=\"fillForm\">" +
+	"<img class= \"close\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png\" onclick =\"div_hide('monthPopup')\">" +
+	"<h2>Months</h2><hr/>" +
+	"<ul id='monthsList'>" + 
+	"</ul>"+
 	"</div></div>";
-	moPopup.innerHTML = moForm;*/
+	moPopup.innerHTML = moForm;
 	console.log("Month list has been displayed!");
+	iterate(0,12);
+}
+
+//Change the below function, not neede/no submit button
+function submitMo(){
+		document.getElementById('moForm').submit();
+		div_hide(moPopup);
+		alert("Month Selected Successfully...");
+}
+
+function iterate(initial, final){
+	for(;initial<final;initial++){
+		monthli = document.createElement('li');
+		monthli.className = 'monthListItem';
+		document.getElementById('monthsList').appendChild(monthli);
+		monthli.innerHTML = monthName[initial].month;
+		monthli.onclick = function(){div_hide('monthPopup');monthView(this.innerHTML);console.log(this.innerHTML + " was clicked.");};
+	}
 }
