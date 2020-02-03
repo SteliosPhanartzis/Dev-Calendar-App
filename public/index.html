@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dock.it</title>
+	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+</head>
+<body>
+	<!-- Vue -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- Placehokder for vue calendar -->
+	<div class="month">February 2020</div>
+	<div id="app">
+		<div class="row" v-for="row in rows">
+			<div class="box" v-for="number in numbers"><span>{{ number + ((row-1) *numbers.length) }}</span></div>
+		</div>
+	</div>
+	<script src="./javascripts/index.js"></script>
+</body>
+</html>
