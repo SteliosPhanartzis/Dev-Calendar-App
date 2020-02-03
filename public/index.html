@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Dock.it</title>
-	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
-</head>
-<body>
-	<!-- Vue -->
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<!-- Placehokder for vue calendar -->
-	<div class="month">February 2020</div>
-	<div id="app">
-		<div class="row" v-for="row in rows">
-			<div class="box" v-for="number in numbers"><span>{{ number + ((row-1) *numbers.length) }}</span></div>
-		</div>
-	</div>
-	<script src="./javascripts/index.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>dock.it</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but dock.it doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
