@@ -1,5 +1,5 @@
-# Dev-Calendar-App
-Work in progress is live!
+# Dock.it
+Current work is live!
 
 https://calapp-dev.herokuapp.com/
 
