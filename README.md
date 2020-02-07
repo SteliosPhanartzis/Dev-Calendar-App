@@ -1,7 +1,7 @@
 # Dock.it
 Current work is live!
 
-https://calapp-dev.herokuapp.com/
+https://dock-it.herokuapp.com/
 
 To Do:
   - Reposition calendar
