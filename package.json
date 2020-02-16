@@ -40,5 +40,18 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "Current work is live!",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SteliosPhanartzis/Dev-Calendar-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SteliosPhanartzis/Dev-Calendar-App/issues"
+  },
+  "homepage": "https://github.com/SteliosPhanartzis/Dev-Calendar-App#readme"
 }
