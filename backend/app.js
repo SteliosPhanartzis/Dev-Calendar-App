@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 //Routes
 app.use('/', require('./routes/index.js'));
 app.use('/dashboard', require('./routes/calendar.js'))
+app.use('/login', require('./routes/login.js'))
 //app.use('/users', require('./routes/users'));
 
 //Define PORT
