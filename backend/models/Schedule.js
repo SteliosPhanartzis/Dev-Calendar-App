@@ -8,6 +8,10 @@ const ScheduleSchema = new mongoose.Schema({
     visibility: {
         type: int,
         required: true
+    },
+    createdBy: {
+    	type: string,
+    	required: true
     }
 })
 

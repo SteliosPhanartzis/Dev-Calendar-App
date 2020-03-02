@@ -1,7 +1,13 @@
 const express = require('express');
 var path = require('path');
+const mongoose = require('mongoose');
 
 const app = express();
+
+const db = require('./config/keys').MongoURI;
+mongoose.connect(db, {useUrlParser: true})
+	.then(() => console.log('MongoDB Connected'))
+	catch( => onsole.log(err));
 
 app.use(express.static(__dirname + '/dist'));
 app.set('view engine', 'ejs');
